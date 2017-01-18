@@ -11,6 +11,8 @@ const decryptEnvVars = require('aws-kms-decrypt-env');
 const decrypted = {};
 
 exports.handler = function(event, context, callback) {
+  // if decryption of all environment variables succeeds, an ok
+  // boolean property is added to the decrypted object.
   if (decrypted.ok) return processEvent(event, context, callback);
 
   decryptEnvVars([
